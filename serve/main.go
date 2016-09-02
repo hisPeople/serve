@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"os/exec"
 	"os/signal"
+	"github.com/hispeople/serve"
 )
 
 var (
@@ -64,7 +65,7 @@ func main() {
 	for {
 		runtime.GOMAXPROCS(runtime.NumCPU())
 		chkdir()
-		server := FileServer{Port: port, Webroot: webroot}
+		server := &serve.FileServer{Port: port, Webroot: webroot}
 		server.Start()
 	}
 }
