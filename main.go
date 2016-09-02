@@ -5,7 +5,6 @@ import (
 	"os"
 	"runtime"
 	"io/ioutil"
-	"github.com/hispeople/serve"
 	"fmt"
 	"os/exec"
 	"os/signal"
@@ -65,7 +64,7 @@ func main() {
 	for {
 		runtime.GOMAXPROCS(runtime.NumCPU())
 		chkdir()
-		server := &serve.FileServer{Port: port, Webroot: webroot}
+		server := FileServer{Port: port, Webroot: webroot}
 		server.Start()
 	}
 }
