@@ -1,6 +1,6 @@
 # serve: serve files or folders
 
-stolen from: https://github.com/itang/gohttp with a few additions. If the path you specify for serving is a file this will create a tmp folder and serve up a copy of just that single file. I find this useful for when I want to share a file with coworker but don't want to share the other files in the directory.
+stolen from: https://github.com/itang/gohttp with a few additions. If the path you specify for serving is a file this will create a tmp folder and serve up a copy of just that single file. I find this useful for when I want to share a file with coworkers but don't want to share the other files in the directory.
 
 ### Usage
 
