@@ -1,4 +1,4 @@
-package serve
+package main
 
 import (
 	"flag"
@@ -8,7 +8,8 @@ import (
 	"fmt"
 	"os/exec"
 	"os/signal"
-	"github.com/hisPeople/serve"
+	"github.com/hisPeople/serve/fileserver"
+	"strings"
 )
 
 var (
@@ -47,7 +48,9 @@ func chkdir() {
 }
 
 func cleanup() {
-	os.RemoveAll(tmpdir)
+	if strings.HasPrefix(tmpdir, os.TempDir()) {
+		os.RemoveAll(tmpdir)
+	}
 	os.Exit(0)
 }
 
@@ -55,8 +58,8 @@ func main() {
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	go func() {
-		for sig := range c {
-			fmt.Printf(sig, " cleaning up and stopping server...\n")
+		for range c {
+			fmt.Println("cleaning up and stopping server...")
 			cleanup()
 		}
 	}()
@@ -64,7 +67,7 @@ func main() {
 	for {
 		runtime.GOMAXPROCS(runtime.NumCPU())
 		chkdir()
-		server := &serve.FileServer{Port: port, Webroot: webroot}
+		server := $fileserver.FileServer{Port: port, Webroot: webroot}
 		server.Start()
 	}
 }
