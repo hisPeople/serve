@@ -6,7 +6,7 @@ stolen from: https://github.com/itang/gohttp with a few additions. If the path y
 
 ```
 $ go get -u github.com/hisPeople/serve
-$ go install github.com/hisPeople/serve/serve
+$ go install github.com/hisPeople/serve
 
 $ serve --help
 
