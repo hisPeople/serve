@@ -67,7 +67,7 @@ func main() {
 	for {
 		runtime.GOMAXPROCS(runtime.NumCPU())
 		chkdir()
-		server := $fileserver.FileServer{Port: port, Webroot: webroot}
+		server := fileserver.FileServer{Port: port, Webroot: webroot}
 		server.Start()
 	}
 }
