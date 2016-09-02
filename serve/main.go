@@ -5,7 +5,7 @@ import (
 	"os"
 	"runtime"
 	"io/ioutil"
-	"github.com/hisPeople/serve"
+	"github.com/hispeople/serve"
 	"fmt"
 	"os/exec"
 	"os/signal"
