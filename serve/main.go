@@ -56,7 +56,7 @@ func main() {
 	signal.Notify(c, os.Interrupt)
 	go func() {
 		for sig := range c {
-			fmt.Println(sig + " cleaning up and stopping server...")
+			fmt.Printf(sig, " cleaning up and stopping server...\n")
 			cleanup()
 		}
 	}()
