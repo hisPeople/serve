@@ -47,7 +47,6 @@ func chkdir() {
 }
 
 func cleanup() {
-	//fmt.Println("cleaning up" + tmpdir)
 	os.RemoveAll(tmpdir)
 	os.Exit(0)
 }
@@ -57,7 +56,7 @@ func main() {
 	signal.Notify(c, os.Interrupt)
 	go func() {
 		for sig := range c {
-			fmt.Println("exiting", sig)
+			fmt.Println(sig + " cleaning up and stopping server...")
 			cleanup()
 		}
 	}()
