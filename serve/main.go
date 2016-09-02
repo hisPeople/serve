@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"os/exec"
 	"os/signal"
-	"github.com/hispeople/serve"
+	"github.com/hisPeople/serve"
 )
 
 var (
