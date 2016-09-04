@@ -77,8 +77,6 @@ func getIPv4ForInterfaceName(ifname string) (ifaceip net.IP) {
 }
 
 func wlanIP4() string {
-	addrs, _ := net.InterfaceAddrs()
-	return fmt.Println(addrs)
 	wip, err := gotang_net.LookupWlanIP4addr()
 	if err != nil {
 		// fallback to returning en0 todo: make default interface configurable
