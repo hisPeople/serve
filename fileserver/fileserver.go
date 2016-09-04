@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/atotto/clipboard"
 	"github.com/itang/gotang"
 	gotang_net "github.com/itang/gotang/net"
 	"net"
@@ -96,6 +97,10 @@ func (fileServer *FileServer) Start() {
 	fmt.Printf("Serving HTTP on %s port %d from \"%s\" ... \n",
 		wlanIP4(), fileServer.Port, fileServer.Webroot,
 	)
+
+	copyString := "http://" + wlanIP4() + ":" + fileServer.Port
+	clipboard.WriteAll(copyString)
+	fmt.Println(copyString + "copied to clipboard")
 
 	addr := fmt.Sprintf(":%v", fileServer.Port)
 	log.Fatal(http.ListenAndServe(addr, nil))
