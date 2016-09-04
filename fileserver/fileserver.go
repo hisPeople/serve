@@ -15,6 +15,7 @@ import (
 
 	"github.com/itang/gotang"
 	gotang_net "github.com/itang/gotang/net"
+	"net"
 )
 
 const htmlTpl = `
@@ -56,10 +57,37 @@ type Item struct {
 	Size  int64
 }
 
+func getIPv4ForInterfaceName(ifname string) (ifaceip net.IP) {
+	interfaces, _ := net.Interfaces()
+	for _, inter := range interfaces {
+		if inter.Name == ifname {
+			if addrs, err := inter.Addrs(); err == nil {
+				for _, addr := range addrs {
+					switch ip := addr.(type) {
+					case *net.IPNet:
+						if ip.IP.DefaultMask() != nil {
+							return (ip.IP)
+						}
+					}
+				}
+			}
+		}
+	}
+	return (nil)
+}
+
 func wlanIP4() string {
+	addrs, _ := net.InterfaceAddrs()
+	return fmt.Println(addrs)
 	wip, err := gotang_net.LookupWlanIP4addr()
 	if err != nil {
-		wip = "Unknown"
+		// fallback to returning en0 todo: make default interface configurable
+		ip := getIPv4ForInterfaceName("en0")
+		if ip != nil {
+			wip = ip.String()
+		} else {
+			wip = "Unknown"
+		}
 	}
 	return wip
 }
