@@ -98,9 +98,9 @@ func (fileServer *FileServer) Start() {
 		wlanIP4(), fileServer.Port, fileServer.Webroot,
 	)
 
-	copyString := "http://" + wlanIP4() + ":" + fileServer.Port
+	copyString := fmt.Sprintf("http://%s:%d", wlanIP4(), fileServer.Port)
 	clipboard.WriteAll(copyString)
-	fmt.Println(copyString + "copied to clipboard")
+	fmt.Println(copyString + " copied to clipboard")
 
 	addr := fmt.Sprintf(":%v", fileServer.Port)
 	log.Fatal(http.ListenAndServe(addr, nil))
