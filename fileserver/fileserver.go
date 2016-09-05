@@ -24,7 +24,7 @@ const htmlTpl = `
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{{.CurrentURI}} - gohttp</title></head>
+  <title>{{.CurrentURI}} - serve</title></head>
   <link href="http://cdn.staticfile.org/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="http://cdn.staticfile.org/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">
 <body>
